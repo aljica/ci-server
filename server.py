@@ -4,7 +4,6 @@ import sqlite3
 from flask import Flask, request
 from json import dumps, load
 from sqlite3 import Error
-import os 
 
 app = Flask(__name__)
 
