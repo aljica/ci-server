@@ -118,7 +118,7 @@ def list_builds():
     html += "</tr>"
 
     for commit in commit_array:
-        html += '<tr style="cursor: pointer;" onclick="document.location.href=' + f"'/builds/{commit[1]}'" + '">'
+        html += '<tr style="cursor: pointer;" onclick="document.location.href=' + f"'/builds/{commit[0]}'" + '">'
         for key in range(2):
             html += f"<td>{commit[key]}</td>"
         html += "</tr>"
