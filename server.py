@@ -4,6 +4,8 @@ import sqlite3
 from flask import Flask, request
 from json import dumps, load
 from sqlite3 import Error
+import requests
+from os import environ
 
 app = Flask(__name__)
 
@@ -137,23 +139,28 @@ def push_hook():
 
     result = subprocess.run(['sh', './ci.sh', repo, commit_id], stdout=subprocess.PIPE)
     ci_output = str(result.stdout)
+    lint_successful = ci_output.find("Lint OK") != -1
+    test_successful =  ci_output.find("Test OK") != -1
 
     # Save build history
     build_details = {
         "commit_id": commit_id,
         "build_date": date,
         "build_logs": ci_output,
-        "url": "/builds/"+date
     }
     values = (commit_id, date, ci_output, "/builds/"+date)
     print(values)
     conn = create_connection(r"commit_history")
     with conn:
         insert_commit(conn, values)
-    # f = open(f"./build_details/{date}.json", "a")
-    # f.write(dumps(build_details))
-    # f.close()
-    # TODO send notification to github or email
+
+    # Update commit status
+    github_status = "success" if lint_successful and test_successful else "failure"
+    requests.post(
+        f"https://api.github.com/repos/{repo}/statuses/{commit_id}",
+        data='{"state": "'+github_status+'"}',
+        auth=tuple(environ.get("GITHUB_TOKEN").split(":")),
+        )
 
 
     return "OK"
