@@ -13,7 +13,11 @@ def create_connection(db_file):
 
 
 def create_table(conn, create_table_sql):
-    # Create the build_history table
+    """
+        Create the build_history table
+        :param conn: DB connection
+        :param create_table_sql: sql to create table
+    """
     try:
         c = conn.cursor()
         c.execute(create_table_sql)
@@ -23,10 +27,10 @@ def create_table(conn, create_table_sql):
 
 def insert_commit(conn, commit):
     """
-    Create a new task
+    Insert build info for a commit into the db.
     :param conn: DB connection
     :param task: {id, date, logs, url}
-    :return:
+    :return: rowId
     """
 
     sql = ''' INSERT INTO history(commit_id,build_date,build_logs,url)
@@ -39,11 +43,18 @@ def insert_commit(conn, commit):
 
 
 def select_commit(conn, id):
-    # Select commit by id
+    """
+        Get build info for a specific commit.
+        :param conn: DB connection
+        :param id: id to get
+        :return: json of build details - {commit_id, build_date, build_logs, url}
+    """
     cur = conn.cursor()
     cur.execute("SELECT * FROM history WHERE commit_id=?", (id,))
 
     row = cur.fetchone()
+    if row is None:
+        return {}
     build_details = {
         "commit_id": row[0],
         "build_date": row[1],
@@ -54,7 +65,11 @@ def select_commit(conn, id):
 
 
 def select_all(conn):
-    # Select commit by id
+    """
+        Get all commit information as an array.
+        :param conn: DB connection
+        :return: array of json objects of build details
+    """
     cur = conn.cursor()
     cur.execute("SELECT * FROM history")
 
@@ -68,6 +83,7 @@ sql_create_build_history_table = """CREATE TABLE IF NOT EXISTS history (
                                     url text NOT NULL
                                 );"""
 
+# Initialize db connection and table.
 def init():
     conn = create_connection(r"commit_history")
     if conn is not None:
