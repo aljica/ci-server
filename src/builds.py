@@ -43,4 +43,8 @@ def create(payload):
     is_successful = lint_successful and test_successful
     notification.update_commit_status(repo, commit_id, is_successful)
 
+    # For sending email
+    receiver_email = payload['head_commit']['author']['email']
+    notification.send_email(values, receiver_email)
+
     return build_details
