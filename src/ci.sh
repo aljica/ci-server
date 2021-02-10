@@ -12,3 +12,7 @@ make lint
 
 echo "Testing..."
 make test
+
+cd ../
+rm -rf $2
+
