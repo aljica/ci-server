@@ -1,4 +1,4 @@
-cd builds
+cd ../builds
 
 echo "Cloning..."
 git clone "https://${GITHUB_TOKEN}@github.com/${1}.git" $2
