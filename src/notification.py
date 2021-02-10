@@ -16,7 +16,7 @@ def update_commit_status(repo, commit_id, is_successful, http_client = None ):
         )
 
 class EmailSender:
-    def sendmail(sender_email, receiver_email, email_msg):
+    def sendmail(self, sender_email, receiver_email, email_msg):
         port = 465  # For SSL
         password = environ.get("PASSWORD")
 
