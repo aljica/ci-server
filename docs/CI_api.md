@@ -1,6 +1,6 @@
 # Continous Integration - Server HTTP API
 
-*Please note: See the code for more code-specific method documentation regarding email notification etc.*
+*Please note: See the code for more code-specific method documentation regarding e-mail notifications etc.*
 
 ## Get build information 
 
