@@ -14,6 +14,10 @@ def list():
 
 
 def create(payload):
+    # Check that the branch is 'assessment'
+    if payload['ref'] != "refs/heads/assessment":
+        print("Branch is not 'assessment', ignoring.")
+        return {}
     repo = payload['repository']['full_name']
     commit_id = payload['head_commit']['id']
     date = payload['head_commit']['timestamp'].replace("-", "").replace(":","").replace("T", "_")[:-5]
