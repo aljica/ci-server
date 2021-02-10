@@ -33,8 +33,7 @@ def create(payload):
         "build_date": date,
         "build_logs": ci_output,
     }
-    values = (commit_id, date, ci_output, "/builds/"+date)
-    print(values)
+    values = (commit_id, date, ci_output, "/builds/"+commit_id)
     conn = db.create_connection(r"commit_history")
     with conn:
         db.insert_commit(conn, values)
