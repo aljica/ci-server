@@ -1,6 +1,6 @@
 # Continious Integration
 
-This repository contains an implementation of a CI-server. The CI-server follows the following structure:
+This repository contains an implementation of a CI-server.  The CI-server follows the following structure:
 
 ![CI-server structure](docs/CI_structure.png)
 *Image derived from lab instructions*
@@ -19,16 +19,17 @@ A description of functions can be found [here](docs/CI_api.md).
 * Python Standard Library 3.9.1
 * [Numpy](https://numpy.org)
 * [Flask](https://pypi.org/project/Flask/)
+* [Requests](https://pypi.org/project/requests/)
   
 ## Installation 
 
-Install Python3 and the required libraries (`pip3 install numpy` and `pip3 install flask`). 
+Install Python3 and the required libraries (`pip3 install numpy`, `pip3 install flask` and `pip3 install requests`). 
 
 Download the KTH GitHub repository: <br>
-`git clone https://kazaaz:b4c576243990e8768a5aba7a91209435c5aeed4a@github.com/aljica/ci-server.git`
+`git clone https://<GitHub_name>:<GitHubtoken_belonging_to_repository_owner>@github.com/aljica/ci-server.git`
 
 Create a Python3 virtual environment: <br>
-`python3 -n venv <name>`
+`python3 -m venv <name>`
 
 Navigate to the environment: <br>
 `cd <name>`
@@ -57,7 +58,7 @@ Add a new webhook to the repository that you will be working on: <br>
 
 *In this project, we used a copy of the repository for the previous assignment, named `kth-decide`.*
 
-`curl -u <GitHubtoken_belonging_to_repository_owner> -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/kazaaz/kth_decide/hooks -d '{"config":{"url":"<NGROK LINK>/push_hook","content_type":"json"}}'`
+`curl -u <GitHub_name>:<GitHubtoken_belonging_to_repository_owner> -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/kazaaz/kth_decide/hooks -d '{"config":{"url":"<NGROK LINK>/push_hook","content_type":"json"}}'`
 
 ## Running 
 *When working on `kth-decide`:*
@@ -69,6 +70,14 @@ Perform and commit changes: <br>
 `git add .` <br>
 `git commit -m "<Commit message>"` <br>
 `git push`
+
+*When working on other repos:* <br>
+
+Make sure that you have a MakeFile with the following content (in addition to the previous instructions): <br>
+`lint:` <br>`python3 -m pylint --disable C,R,W DECIDE.py && echo "Lint" "OK"`
+
+`test:` <br> 
+`python3 DECIDE_test.py && echo "Test" "OK"`
 
 ## Testing
 
@@ -105,7 +114,7 @@ Since it is hard to test that an actual message has been delivered via Gmail we 
   * Contributed to functionality for connecting and notifying CI-server from GitHub
   * Wrote documentation (incl. internal API)
 * Ayham Alkazaz 
-  * Implemented functionality for updating GitHub commit status and performed code refactoring, as well as functionality and unit tests for e-mail notifications
+  * Implemented functionality for updating GitHub commit status and performed code refactoring, as well as functionality and unit tests for e-mail notifications, implemented build details browser view
   * Created initial project template and contributed to functionality for connecting and notifying CI-server from GitHub
   * Wrote documentation 
 * Dina Lerjevik
@@ -119,10 +128,11 @@ Since it is hard to test that an actual message has been delivered via Gmail we 
 * Sebastian Williams
   * Implemented SQLite database and unit tests for database methods
   * Performed code refactoring
+  * Created multiple issues
 
 **Final words**
   
-We are proud of the structure, that we managed to follow the naming convension for the commit messages and the collaboration, since all collaborators followed the code of conduct and did their best to follow the workflow that we had set up. Furthermore, we are happy that we managed to plan complete this project within the given time frame. 
+We are proud of the structure, that we managed to follow the naming convention for the commit messages and the collaboration, since all collaborators followed the code of conduct and did their best to follow the workflow that we had set up. Furthermore, we are happy that we managed to plan and complete this project within the given time frame. We are extra proud that we implemented both notification by e-mail and by GitHub commit status, we have also created user-friendly browser view for the build history and build details, additionally we also saved the build history properly in a database.  
 
 ## Licence
 
