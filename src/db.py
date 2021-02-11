@@ -69,6 +69,8 @@ def select_commit(conn, id):
     cur.execute("SELECT * FROM history WHERE commit_id=?", (id,))
 
     row = cur.fetchone()
+    if row is None:
+        return {}
     build_details = {
         "commit_id": row[0],
         "build_date": row[1],
@@ -100,6 +102,7 @@ sql_create_build_history_table = """CREATE TABLE IF NOT EXISTS history (
                                     url text NOT NULL
                                 );"""
 
+# Initialize db connection and table.
 def init():
     conn = create_connection(r"commit_history")
     if conn is not None:
