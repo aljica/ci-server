@@ -2,9 +2,9 @@
 
 ## Explanation of functions
 
-See the code for more code-specific method documentation regarding e-mail notifications etc. Furthermore, the following command can be used to view the API of a file (e.g. `server.py`) as a HTML file: 
+See the code for more code-specific method documentation regarding e-mail notifications etc. Furthermore, the following command can be used to view the entire API as HTML in the browser: 
 
-`pydoc -w ./<filename>`
+`make doc` 
 
 ## Get build information 
 
