@@ -43,7 +43,7 @@ def create(payload):
     date = payload['head_commit']['timestamp'].replace("-", "").replace(":","").replace("T", "_")[:-5]
 
     result = subprocess.run(['sh', './ci.sh', repo, commit_id], stdout=subprocess.PIPE)
-    ci_output = str(result.stdout)
+    ci_output = result.stdout.decode("utf-8")
     lint_successful = ci_output.find("Lint OK") != -1
     test_successful =  ci_output.find("Test OK") != -1
 
