@@ -22,7 +22,7 @@ A description of functions can be found [here](docs/CI_api.md).
   
 ## Installation 
 
-Install Python3 and the required libraries (`pip3 install numpy` and `pip3 install flask`. 
+Install Python3 and the required libraries (`pip3 install numpy` and `pip3 install flask`). 
 
 Download the KTH GitHub repository: <br>
 `git clone https://kazaaz:b4c576243990e8768a5aba7a91209435c5aeed4a@github.com/aljica/ci-server.git`
@@ -103,7 +103,7 @@ Since it is hard to test that an actual message has been delivered via Gmail we 
 * Almir Aljic:
   * Implemented functionality for e-mail notifications 
   * Contributed to functionality for connecting and notifying CI-server from GitHub
-  * Wrote documentation 
+  * Wrote documentation (incl. internal API)
 * Ayham Alkazaz 
   * Implemented functionality for updating GitHub commit status and performed code refactoring, as well as functionality and unit tests for e-mail notifications
   * Created initial project template and contributed to functionality for connecting and notifying CI-server from GitHub
@@ -111,11 +111,11 @@ Since it is hard to test that an actual message has been delivered via Gmail we 
 * Dina Lerjevik
   * Implemented functionality and unit tests for e-mail notifications 
   * Contributed to functionality for connecting and notifying CI-server from GitHub
-  * Wrote documentation 
+  * Wrote documentation (incl. internal API)
 * Djiar Salim
   * Implemented initial browser view for the latest builds, functionality for updating GitHub commit status and unit tests for e-mail notifications, performed code refactoring 
   * Contributed to functionality for connecting and notifying CI-server from GitHub
-  * Wrote documentation 
+  * Wrote documentation (incl. internal API)
 * Sebastian Williams
   * Implemented SQLite database and unit tests for database methods
   * Performed code refactoring
