@@ -1,4 +1,4 @@
-# Continious Integration
+# Continuous Integration
 
 This repository contains an implementation of a CI-server.  The CI-server follows the following structure:
 
@@ -9,7 +9,7 @@ This repository contains an implementation of a CI-server.  The CI-server follow
 
 A description of functions can be found [here](docs/CI_api.md).
 
-## Prerequisities
+## Prerequisites
 
 * Python3
 * [Ngrok](https://ngrok.com/download)
@@ -81,17 +81,25 @@ Make sure that you have a MakeFile with the following content (in addition to th
 
 ## Testing
 
-Appriopriate unit tests for the CI-server, email-notifications and database have been added and can be found in the `src/builds_test.py`, `src/notification_test.py` and `src/db_test.py` files.
+Appropriate unit tests for the CI-server, email-notifications and database have been added and can be found in the `src/builds_test.py`, `src/notification_test.py` and `src/db_test.py` files.
 
 A makefile has been added in order to simplify the process of executing these tests. Thus, the following command can be used to run these tests:
 
 `make test`
 
+## View documentation in browser
+
+The makefile also contains the following command `pydoc3 -b ./` in order to view the entire API as HTML in the browser. Thus, you can obtain the API by using the following command: 
+
+`make doc` 
+
+When running this command, a localhost URL will become visible in the terminal. Paste that link into your browser.
+
 ## E-mail notifications
 
-You will recieve an e-mail notification when commiting to the repository. This notification contains the information available at `http://<ci_server>/builds` and was implemented following [these](https://realpython.com/python-send-email/) instructions, using the Simple Mail Transfer Protocol (SMTP) found in the `smtplib` module. Furthermore, a Gmail-account was set-up in order to send out e-mails. This account and its password has been safely stored in the `start_server.sh` file. 
+You will receive an e-mail notification when committing to the repository. This notification contains the information available at `http://<ci_server>/builds` and was implemented following [these](https://realpython.com/python-send-email/) instructions, using the Simple Mail Transfer Protocol (SMTP) found in the `smtplib` module. Furthermore, a Gmail-account was set-up in order to send out e-mails. This account and its password has been safely stored in the `start_server.sh` file. 
 
-Since it is hard to test that an actual message has been delivered via Gmail we decided to mock the `EmailSender` and extract SMTP realted logic to a seperate class. In order to create a fake e-mail and assert that the e-mail is delivered correctly, `unittest.mock` has been used.
+Since it is hard to test that an actual message has been delivered via Gmail we decided to mock the `EmailSender` and extract SMTP related logic to a separate class. In order to create a fake e-mail and assert that the e-mail is delivered correctly, `unittest.mock` has been used.
 
 ## Workflow
 
@@ -99,15 +107,17 @@ Since it is hard to test that an actual message has been delivered via Gmail we 
   
   `feat: description #issue` 
 
-  `fix: decription #issue`
+  `fix: description #issue`
 
-  `test: decription #issue` 
+  `test: description #issue` 
 
   `enhance: description #issue`
 
   `documentation: description #issue`
 
 **Statement of contributions**
+
+*Please note: Pair-programming has been used.*
 
 * Almir Aljic:
   * Implemented functionality for e-mail notifications 
