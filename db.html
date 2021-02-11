@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module db</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>db</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/dinalerjevik/ci-server/src/db.py">/Users/dinalerjevik/ci-server/src/db.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sqlite3.html">sqlite3</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-create_connection"><strong>create_connection</strong></a>(db_file)</dt><dd><tt>Create&nbsp;a&nbsp;database&nbsp;connection&nbsp;to&nbsp;a&nbsp;SQLite&nbsp;database<br>
+&nbsp;<br>
+Parameters:<br>
+db_file&nbsp;(str):&nbsp;Database&nbsp;file<br>
+&nbsp;<br>
+Returns:<br>
+conn&nbsp;(Connection):&nbsp;Connection&nbsp;to&nbsp;a&nbsp;SQLite&nbsp;database</tt></dd></dl>
+ <dl><dt><a name="-create_table"><strong>create_table</strong></a>(conn, create_table_sql)</dt><dd><tt>Create&nbsp;the&nbsp;build_history&nbsp;table<br>
+&nbsp;<br>
+Parameters:<br>
+conn&nbsp;(Connection):&nbsp;Connection&nbsp;to&nbsp;a&nbsp;SQLite&nbsp;database<br>
+create_table_sql&nbsp;(str):&nbsp;String&nbsp;representative&nbsp;of&nbsp;SQL&nbsp;query<br>
+&nbsp;<br>
+Returns:<br>
+None</tt></dd></dl>
+ <dl><dt><a name="-init"><strong>init</strong></a>()</dt></dl>
+ <dl><dt><a name="-insert_commit"><strong>insert_commit</strong></a>(conn, commit)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;task<br>
+&nbsp;<br>
+Parameters:<br>
+conn&nbsp;(Connection):&nbsp;Connection&nbsp;to&nbsp;a&nbsp;SQLite&nbsp;database<br>
+&nbsp;<br>
+Return:<br>
+last_row&nbsp;(str):&nbsp;String&nbsp;representative&nbsp;of&nbsp;integer&nbsp;ID&nbsp;of&nbsp;last&nbsp;row&nbsp;modified</tt></dd></dl>
+ <dl><dt><a name="-select_all"><strong>select_all</strong></a>(conn)</dt><dd><tt>Select&nbsp;all&nbsp;commits&nbsp;from&nbsp;history<br>
+&nbsp;<br>
+Parameters:<br>
+conn&nbsp;(Connection):&nbsp;Connection&nbsp;to&nbsp;a&nbsp;SQLite&nbsp;database<br>
+&nbsp;<br>
+Return:<br>
+rows&nbsp;(list):&nbsp;List&nbsp;containing&nbsp;all&nbsp;historical&nbsp;commits</tt></dd></dl>
+ <dl><dt><a name="-select_commit"><strong>select_commit</strong></a>(conn, id)</dt><dd><tt>Select&nbsp;commit&nbsp;by&nbsp;ID<br>
+&nbsp;<br>
+Parameters:<br>
+conn&nbsp;(Connection):&nbsp;Connection&nbsp;to&nbsp;a&nbsp;SQLite&nbsp;database<br>
+id&nbsp;(str):&nbsp;Commit&nbsp;ID&nbsp;(sha-hash)<br>
+&nbsp;<br>
+Return:<br>
+build_details&nbsp;(dict):&nbsp;Dictionary&nbsp;containing&nbsp;commit&nbsp;info,&nbsp;including&nbsp;commit_id,&nbsp;build_date,&nbsp;build_logs&nbsp;and&nbsp;url</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>sql_create_build_history_table</strong> = 'CREATE TABLE IF NOT EXISTS history (<font color="#c040c0">\n</font>           ... text NOT NULL<font color="#c040c0">\n</font>                                );'</td></tr></table>
+</body></html>
