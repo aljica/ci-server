@@ -31,7 +31,7 @@ def ping():
 
 
 @app.route('/builds/<id>', methods=['GET'])
-def get_build(id):    
+def get_build(id):
     """Returns build details
 
     Parameters:
@@ -39,9 +39,26 @@ def get_build(id):
     
     Return:
     build_details (str): String representative of commit information
-   """    
+    """
     build_details = builds.get(id)
-    return build_details
+    formated_logs = build_details['build_logs'].replace("\n", "<br/>")
+    return f"""
+        <html>
+            <body>
+                <h1>Build details:</h1>
+
+                <h2>Commit id:</h2>
+                <p>{build_details['commit_id']}</p>
+
+                <h2>Build date:</h2>
+                <p>{build_details['build_date']}</p>
+
+                <h2>Build logs:</h2>
+                <pre>{formated_logs}</pre>
+            </body>
+        </html>
+    """
+
 
 
 @app.route('/builds', methods=['GET'])
