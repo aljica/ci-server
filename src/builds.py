@@ -1,4 +1,5 @@
 import subprocess
+from subprocess import STDOUT
 import db
 import notification
 
@@ -42,7 +43,7 @@ def create(payload):
     commit_id = payload['head_commit']['id']
     date = payload['head_commit']['timestamp'].replace("-", "").replace(":","").replace("T", "_")[:-5]
 
-    result = subprocess.run(['sh', './ci.sh', repo, commit_id], stdout=subprocess.PIPE)
+    result = subprocess.run(['sh', './ci.sh', repo, commit_id], stdout=subprocess.PIPE, stderr=STDOUT)
     ci_output = result.stdout.decode("utf-8")
     lint_successful = ci_output.find("Lint OK") != -1
     test_successful =  ci_output.find("Test OK") != -1
