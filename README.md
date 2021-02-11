@@ -26,7 +26,7 @@ A description of functions can be found [here](docs/CI_api.md).
 Install Python3 and the required libraries (`pip3 install numpy`, `pip3 install flask` and `pip3 install requests`). 
 
 Download the KTH GitHub repository: <br>
-`git clone https://<GitHub_name>:<GitHubtoken_belonging_to_repository_owner>@github.com/aljica/ci-server.git`
+`git clone https://<GitHub_name>:<GitHubtoken_belonging_to_someone_who_has_access_to_repository>@github.com/aljica/ci-server.git`
 
 Create a Python3 virtual environment: <br>
 `python3 -m venv <name>`
@@ -74,22 +74,23 @@ Perform and commit changes: <br>
 *When working on other repos:* <br>
 
 Make sure that you have a MakeFile with the following content (in addition to the previous instructions): <br>
-`lint:` <br>`python3 -m pylint --disable C,R,W DECIDE.py && echo "Lint" "OK"`
+`lint:` <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`python3 -m pylint --disable C,R,W DECIDE.py && echo "Lint" "OK"`
 
 `test:` <br> 
-`python3 DECIDE_test.py && echo "Test" "OK"`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`python3 DECIDE_test.py && echo "Test" "OK"`
 
 ## Testing
 
 Appropriate unit tests for the CI-server, email-notifications and database have been added and can be found in the `src/builds_test.py`, `src/notification_test.py` and `src/db_test.py` files.
 
-A makefile has been added in order to simplify the process of executing these tests. Thus, the following command can be used to run these tests:
+A MakeFile has been added in order to simplify the process of executing these tests. Thus, the following command can be used to run these tests:
 
 `make test`
 
 ## View documentation in browser
 
-The makefile also contains the following command `pydoc3 -b ./` in order to view the entire API as HTML in the browser. Thus, you can obtain the API by using the following command: 
+The MakeFile also contains the following command `pydoc3 -b ./` in order to view the entire API as HTML in the browser. Thus, you can obtain the API by using the following command: 
 
 `make doc` 
 
