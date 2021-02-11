@@ -40,8 +40,8 @@ class EmailSender:
     sendmail(sender_email, receiver_email, email_msg):
         Sends an e-mail with the provided content. The environment variable PASSWORD has to be set for the sender's e-mail account
     
-   """    
-    def sendmail(sender_email, receiver_email, email_msg):
+   """
+    def sendmail(self, sender_email, receiver_email, email_msg):
         """Sends an e-mail with the provided content. The environment variable PASSWORD has to be set for the sender's e-mail account
 
         Parameters:
