@@ -15,7 +15,24 @@ def ping():
 
 @app.route('/builds/<id>', methods=['GET'])
 def get_build(id):
-    return builds.get(id)
+    build_details = builds.get(id)
+    formated_logs = build_details['build_logs'].replace("\n", "<br/>")
+    return f"""
+        <html>
+            <body>
+                <h1>Build details:</h1>
+
+                <h2>Commit id:</h2>
+                <p>{build_details['commit_id']}</p>
+
+                <h2>Build date:</h2>
+                <p>{build_details['build_date']}</p>
+
+                <h2>Build logs:</h2>
+                <pre>{formated_logs}</pre>
+            </body>
+        </html>
+    """
 
 
 @app.route('/builds', methods=['GET'])
